@@ -1,13 +1,8 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
 import React from 'react';
-import Button from './Button';
+// import Button from './Button';
 import { nanoid } from 'nanoid';
-
-const reseter = {
-  name: '',
-  number: '',
-};
 
 class Phonebook extends Component {
   state = {
@@ -101,10 +96,9 @@ class Phonebook extends Component {
         </ul>
       </div>
     );
-    Phonebook.propTypes = {
-      contacts: PropTypes.object.isRequired,
-    };
   }
 }
-
+Phonebook.propTypes = {
+  contacts: PropTypes.object.isRequired,
+};
 export default Phonebook;
