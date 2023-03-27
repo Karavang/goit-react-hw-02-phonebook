@@ -1,25 +1,25 @@
-import { nanoid } from 'nanoid';
-function Button() {
-  return (
-    <button
-      className="btn btn-primary add-contact"
-      onClick={e => {
-        e.preventDefault();
-        const newContact = {
-          id: nanoid(),
-          name: this.state.name,
-          number: this.state.number,
-        };
-        this.setState({
-          contacts: [...this.state.contacts, newContact],
-          name: '',
-          number: '',
-        });
-      }}
-    >
-      Add contact
-    </button>
-  );
-}
+// import { nanoid } from 'nanoid';
+// function Button() {
+//   return (
+//     <button
+//       className="btn btn-primary add-contact"
+//       onClick={props => {
+//         props.preventDefault();
+//         const newContact = {
+//           id: nanoid(),
+//           name: props.name,
+//           number: props.number,
+//         };
+//         props.setState({
+//           contacts: [...props.contacts, newContact],
+//           name: '',
+//           number: '',
+//         });
+//       }}
+//     >
+//       Add contact
+//     </button>
+//   );
+// }
 
-export default Button;
+// export default Button;

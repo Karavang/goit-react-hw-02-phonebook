@@ -2,6 +2,12 @@ import { Component } from 'react';
 import PropTypes from 'prop-types';
 import React from 'react';
 import Button from './Button';
+import { nanoid } from 'nanoid';
+
+const reseter = {
+  name: '',
+  number: '',
+};
 
 class Phonebook extends Component {
   state = {
@@ -50,7 +56,24 @@ class Phonebook extends Component {
                   }}
                 />
               </div>
-              <Button />
+              <button
+                className="btn btn-primary add-contact"
+                onClick={e => {
+                  e.preventDefault();
+                  const newContact = {
+                    id: nanoid(),
+                    name: this.state.name,
+                    number: this.state.number,
+                  };
+                  this.setState({
+                    contacts: [...this.state.contacts, newContact],
+                    name: '',
+                    number: '',
+                  });
+                }}
+              >
+                Add contact
+              </button>
             </form>
           </li>
           <li>
@@ -78,9 +101,10 @@ class Phonebook extends Component {
         </ul>
       </div>
     );
+    Phonebook.propTypes = {
+      contacts: PropTypes.object.isRequired,
+    };
   }
 }
-Phonebook.propTypes = {
-  contacts: PropTypes.object.isRequired,
-};
+
 export default Phonebook;
