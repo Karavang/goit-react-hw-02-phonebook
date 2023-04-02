@@ -1,11 +1,8 @@
 import { Component } from 'react';
-
 import React from 'react';
 import { nanoid } from 'nanoid';
-import Form from './Form';
-import Filter from './Filter';
-import List from './ContactList';
-class Phonebook extends Component {
+
+export default class List extends Component {
   state = {
     contacts: [],
     filter: '',
@@ -28,24 +25,20 @@ class Phonebook extends Component {
   };
 
   render() {
+    const filteredContacts = this.state.contacts.filter(contact =>
+      contact.name.toLowerCase().includes(this.state.filter.toLowerCase())
+    );
+
     return (
-      <div className="all-pos">
-        <ul className="flexator">
-          <li>
-            <form action="">
-              <h1>Phonebook</h1>
-              <Form addContact={this.addContact} />
-            </form>
-          </li>
-          <li>
-            <h1>Contacts</h1>
-            <Filter addContact={this.addContact} />
-            <List addContact={this.addContact} />
-          </li>
+      <div className="scrollable-list">
+        <ul className="listContacts">
+          {filteredContacts.map(e => (
+            <li key={e.contacts.id}>
+              <b>{e.contacts.name}</b> - {e.contacts.number}
+            </li>
+          ))}
         </ul>
       </div>
     );
   }
 }
-
-export default Phonebook;
