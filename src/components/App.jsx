@@ -19,8 +19,7 @@ class Phonebook extends Component {
     const newFilter = {
       filter: filter,
     };
-    console.log(newContact);
-    console.log(newFilter);
+
     this.setState(prevState => ({
       contacts: [...prevState.contacts, newContact],
       filter: [...prevState.filter, newFilter],
@@ -40,7 +39,7 @@ class Phonebook extends Component {
           <li>
             <h1>Contacts</h1>
             <Filter addContact={this.addContact} />
-            <List addContact={this.addContact} />
+            <List contacts={this.state.contacts} filter={this.state.filter} />
           </li>
         </ul>
       </div>
