@@ -38,7 +38,7 @@ class Phonebook extends Component {
           </li>
           <li>
             <h1>Contacts</h1>
-            <Filter addContact={this.addContact} />
+            <Filter filter={this.state.filter} />
             <List contacts={this.state.contacts} filter={this.state.filter} />
           </li>
         </ul>
