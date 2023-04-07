@@ -1,5 +1,5 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 export default function Filter({ filter }) {
   return (
     <input
@@ -13,3 +13,6 @@ export default function Filter({ filter }) {
     />
   );
 }
+Filter.propTypes = {
+  filter: PropTypes.string.isRequired,
+};

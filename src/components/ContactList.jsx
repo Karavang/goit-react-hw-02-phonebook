@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export default function List({ contacts, filter, removeContacts }) {
   const filteredContacts = contacts.filter(contact =>
@@ -39,3 +40,9 @@ export default function List({ contacts, filter, removeContacts }) {
     </div>
   );
 }
+
+List.propTypes = {
+  contacts: PropTypes.array.isRequired,
+  filter: PropTypes.string.isRequired,
+  removeContacts: PropTypes.func.isRequired,
+};
