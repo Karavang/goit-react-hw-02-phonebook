@@ -40,6 +40,7 @@ export default class Form extends Component {
           className="btn btn-primary add-contact"
           onClick={e => {
             e.preventDefault();
+
             this.props.addContact(this.state.name, this.state.number);
 
             this.setState({

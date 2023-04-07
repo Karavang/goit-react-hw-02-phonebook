@@ -11,19 +11,38 @@ class Phonebook extends Component {
     filter: '',
   };
   addContact = (name, number, filter) => {
-    const newContact = {
-      id: nanoid(),
-      name: name,
-      number: number,
-    };
-    const newFilter = {
-      filter: filter,
-    };
+    const findElement = this.state.contacts.find(e => {
+      return e.name.toLowerCase().includes(name.toLowerCase());
+    });
 
-    this.setState(prevState => ({
-      contacts: [...prevState.contacts, newContact],
-      filter: [...prevState.filter, newFilter],
-    }));
+    if (findElement) {
+      alert('Таке вже є');
+    } else {
+      const newContact = {
+        id: nanoid(),
+        name: name,
+        number: number,
+      };
+
+      this.setState(prevState => ({
+        contacts: [...prevState.contacts, newContact],
+        filter: prevState.filter,
+      }));
+    }
+  };
+
+  removeContacts = id => {
+    this.setState({
+      contacts: this.state.contacts.filter(e => {
+        return e.id !== id;
+      }),
+    });
+  };
+
+  editFilter = value => {
+    this.setState({
+      filter: value,
+    });
   };
 
   render() {
@@ -38,8 +57,12 @@ class Phonebook extends Component {
           </li>
           <li>
             <h1>Contacts</h1>
-            <Filter filter={this.state.filter} />
-            <List contacts={this.state.contacts} filter={this.state.filter} />
+            <Filter filter={this.editFilter} />
+            <List
+              contacts={this.state.contacts}
+              filter={this.state.filter}
+              removeContacts={this.removeContacts}
+            />
           </li>
         </ul>
       </div>

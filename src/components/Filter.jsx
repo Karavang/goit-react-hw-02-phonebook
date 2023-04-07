@@ -8,8 +8,7 @@ export default function Filter({ filter }) {
       className="form-control"
       placeholder="Search by name"
       onChange={e => {
-        filter = e.target.value;
-        console.log(filter);
+        filter(e.target.value);
       }}
     />
   );
