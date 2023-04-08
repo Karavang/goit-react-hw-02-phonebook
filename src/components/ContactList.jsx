@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 export default function List({ contacts, filter, removeContacts }) {
   const filteredContacts = contacts.filter(contact =>
-    contact.name.toLowerCase().includes(filter)
+    contact.name.includes(filter)
   );
 
   return (
